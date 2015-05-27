@@ -34,6 +34,7 @@ public class Principal extends JFrame {
 	 * mateix.
 	 */
 	public Principal() {
+		setTitle("THE LABY");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 526, 572); // Utilitzem unes mesures que sabem que
 										// s'acoplaran a la mesura dels panells.
