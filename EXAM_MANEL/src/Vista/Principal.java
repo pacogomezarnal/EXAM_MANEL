@@ -6,13 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Modelo.Cadete;
+import Modelo.IngresoLaby;
 import Modelo.ModCad;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private ModCad mc;
+	private IngresoLaby il;
 	private VUsuario vu;
 	private VEquipo ve;
 	private VComprobacion vc;
@@ -35,10 +36,11 @@ public class Principal extends JFrame {
 	}
 	
 	public void creaPanels(){
+		il = new IngresoLaby();
 		mc = new ModCad();
 		vu = new VUsuario(mc);
 		ve = new VEquipo(mc);
-		vc = new VComprobacion();
+		vc = new VComprobacion(il);
 		contentPane.add(vu, "Usuario");
 		contentPane.add(ve, "Equipo");
 		contentPane.add(vc,"Comprobacion");
@@ -49,9 +51,8 @@ public class Principal extends JFrame {
 		CardLayout cl = (CardLayout) contentPane.getLayout();
 		cl.show(contentPane, "Usuario");
 }
-	public void showEquipo(Cadete c){
+	public void showEquipo(){
 		CardLayout cl = (CardLayout) contentPane.getLayout();
-		ve.setText(c);
 		cl.show(contentPane, "Equipo");
 }
 	public void showComp(){

@@ -76,7 +76,7 @@ public class VUsuario extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Principal.getPrincipal().showEquipo(cad);
+				Principal.getPrincipal().showEquipo();
 			}
 		});
 		

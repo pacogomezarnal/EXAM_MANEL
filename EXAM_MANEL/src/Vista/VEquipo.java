@@ -1,5 +1,7 @@
 package Vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -79,6 +81,13 @@ public class VEquipo extends JPanel {
 		JButton btnSeg = new JButton("Seg\u00FCent >>");
 		btnSeg.setBounds(331, 444, 159, 23);
 		add(btnSeg);
+		btnSeg.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Principal.getPrincipal().showComp();
+			}
+		});
 
 		JLabel lblNom = new JLabel("Nom");
 		lblNom.setBounds(206, 53, 130, 14);
@@ -107,6 +116,13 @@ public class VEquipo extends JPanel {
 		JButton btnEnr = new JButton("<< Enrrere");
 		btnEnr.setBounds(10, 444, 165, 23);
 		add(btnEnr);
+		btnEnr.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Principal.getPrincipal().showUsuario();
+			}
+		});
 		
 		txtCog2 = new JTextField();
 		txtCog2.setEditable(false);

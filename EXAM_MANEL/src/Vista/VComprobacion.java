@@ -1,19 +1,26 @@
 package Vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JButton;
+
+import Modelo.IngresoLaby;
 
 public class VComprobacion extends JPanel {
 
 	private JTextField txtId;
 	private JTextField txtCog;
 	private JTextField txtComp;
+	private IngresoLaby il;
 	/**
 	 * Create the panel.
 	 */
-	public VComprobacion() {
+	public VComprobacion(IngresoLaby igl) {
+		this.il = igl;
 		setBounds(0,0,500,500);
 		setLayout(null);
 		
@@ -39,6 +46,16 @@ public class VComprobacion extends JPanel {
 		JButton btnComp = new JButton("COMPROVA");
 		btnComp.setBounds(10, 151, 480, 23);
 		add(btnComp);
+		btnComp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int id = Integer.parseInt(txtId.getText());
+				String cognom = txtCog.getText();
+				cognom = cognom.toUpperCase();
+				txtComp.setText(il.getCod(id, cognom));
+			}
+		});
 		
 		txtComp = new JTextField();
 		txtComp.setEditable(false);
@@ -50,6 +67,13 @@ public class VComprobacion extends JPanel {
 		JButton btnEnr = new JButton("<< Enrrere");
 		btnEnr.setBounds(10, 444, 165, 23);
 		add(btnEnr);
+		btnEnr.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Principal.getPrincipal().showEquipo();
+			}
+		});
 	}
 
 }
