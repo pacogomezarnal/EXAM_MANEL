@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 
+ * @author Manel Andreu
+ *
+ */
 //Clase que comprueba el codigo de entrada
 public class IngresoLaby {
 	//CONSULTA A LA BASE DE DATOS

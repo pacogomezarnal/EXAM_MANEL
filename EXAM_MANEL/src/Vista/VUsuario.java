@@ -12,8 +12,15 @@ import javax.swing.JTextField;
 
 import Modelo.Cadete;
 import Modelo.ModCad;
-
+/**
+ * 
+ * @author Manel Andreu
+ *
+ */
 public class VUsuario extends JPanel {
+	/**
+	 * Classe que serà la vista de usuari.
+	 */
 	private JTextField txtNom;
 	private JTextField txtId;
 	private JTextField txtCog;
@@ -24,7 +31,7 @@ public class VUsuario extends JPanel {
 	private Cadete cad;
 
 	/**
-	 * Create the panel.
+	 * Constructor de la classe.
 	 */
 	public VUsuario(ModCad mc) {
 		modc = mc;
@@ -36,7 +43,7 @@ public class VUsuario extends JPanel {
 		JLabel imatge = new JLabel("");
 		imatge.setBounds(10, 52, 130, 130);
 		add(imatge);
-		imatge.setIcon(new ImageIcon(VUsuario.class.getResource("/Imatges/img.jpg")));
+		imatge.setIcon(new ImageIcon(VUsuario.class.getResource("/Imatges/img.jpg"))); //Li posem un ImageIcon com a imatge amb el mètod setIcon. Utilitzarem com a ruta el nostre propi codi, on tenim la imatge guardada.
 		
 		this.txtNom = new JTextField();
 		this.txtNom.setEditable(false);
@@ -69,6 +76,9 @@ public class VUsuario extends JPanel {
 		add(this.txtNac);
 		this.txtNac.setColumns(10);
 		
+		/**
+		 * Creem el botó de següent.
+		 */
 		JButton btnSeg = new JButton("Seg\u00FCent >>");
 		btnSeg.setBounds(331, 444, 159, 23);
 		add(btnSeg);
@@ -102,7 +112,10 @@ public class VUsuario extends JPanel {
 		
 		setText(22);
 	}
-	
+	/**
+	 * Mètod que replena els JTextField segons el id del cadete que li donem.
+	 * @param id int
+	 */
 	public void setText(int id){
 		for(int i = 0; i<cadete.size();i++){
 			if(cadete.get(i).getId()==id){

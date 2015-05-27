@@ -14,8 +14,15 @@ import javax.swing.JTextField;
 
 import Modelo.Cadete;
 import Modelo.ModCad;
-
+/**
+ * 
+ * @author Manel Andreu
+ *
+ */
 public class VEquipo extends JPanel {
+	/**
+	 * Classe que serà la vista del equip.
+	 */
 	private JTextField txtNom;
 	private JTextField txtId;
 	private JTextField txtCog1;
@@ -27,7 +34,7 @@ public class VEquipo extends JPanel {
 	private JTextField txtCog2;
 
 	/**
-	 * Create the panel.
+	 * Constructor.
 	 */
 	public VEquipo(ModCad mc) {
 		modc = mc;
@@ -43,7 +50,7 @@ public class VEquipo extends JPanel {
 			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				setText(equip.get(cbequip.getSelectedIndex()));
+				setText(equip.get(cbequip.getSelectedIndex()));//Controlem que s'actualitze amb el nostre mètod de setText sempre que cambie la selecció del comboBox.
 			}
 		});
 
@@ -78,6 +85,9 @@ public class VEquipo extends JPanel {
 		add(txtNac);
 		txtNac.setColumns(10);
 
+		/**
+		 * Implementem els botons de següent i de enrrere.
+		 */
 		JButton btnSeg = new JButton("Seg\u00FCent >>");
 		btnSeg.setBounds(331, 444, 159, 23);
 		add(btnSeg);
@@ -86,6 +96,17 @@ public class VEquipo extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Principal.getPrincipal().showComp();
+			}
+		});
+		
+		JButton btnEnr = new JButton("<< Enrrere");
+		btnEnr.setBounds(10, 444, 165, 23);
+		add(btnEnr);
+		btnEnr.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Principal.getPrincipal().showUsuario();
 			}
 		});
 
@@ -113,16 +134,7 @@ public class VEquipo extends JPanel {
 		lblEquip.setBounds(10, 53, 149, 14);
 		add(lblEquip);
 
-		JButton btnEnr = new JButton("<< Enrrere");
-		btnEnr.setBounds(10, 444, 165, 23);
-		add(btnEnr);
-		btnEnr.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Principal.getPrincipal().showUsuario();
-			}
-		});
+	
 		
 		txtCog2 = new JTextField();
 		txtCog2.setEditable(false);
@@ -137,11 +149,19 @@ public class VEquipo extends JPanel {
 		replenaComboBox();
 	}
 
+	/**
+	 * Mètod que replena el nostre comboBox.
+	 */
 	public void replenaComboBox(){
 		for(int i=0;i<equip.size();i++){
 			cbequip.addItem(equip.get(i).getNombre());
 		}
 	}
+	
+	/**
+	 * Mètod que replena els JTextField segons el cadete que li donem.
+	 * @param cad Cadete
+	 */
 	public void setText(Cadete cad) {
 		String cognoms = cad.getApellidos();
 		String cog1 = cognoms.substring(0, cognoms.lastIndexOf(" "));
