@@ -13,7 +13,7 @@ public class ConexionDB {
 	private static final String HOST="localhost";
 	private static final String BBDD="thelaby";
 	private static final String USER="root";
-	private static final String PASS="";
+	private static final String PASS="tonphp";
 	
 	//DATOS DE LA BBDD
 	private String host;
@@ -34,21 +34,29 @@ public class ConexionDB {
 		this.user=USER;
 		this.pass=PASS;
 		this.url="jdbc:mysql://"+this.host+"/"+this.bbdd;
+		
+		if(connectDB()){
+			System.out.println("Guai!");
+		}else{
+			System.out.println("Error!");
+		}
 	}
 	
 	//Implementar SingleTon
 	public static ConexionDB getInstance(String HOST,String BBDD,String USER,String PASS) {
 	      if(instance == null) {
-	         instance = null;
+	         instance = new ConexionDB(HOST,BBDD,USER,PASS);
 	      }
 	      return instance;
 	   }
+	
 	//Este método es el mismo que el anterior pero no es necesario
 	//pasar parámetros de base de datos ya que toma los
 	//valores por defecto
+	
 	public static ConexionDB getInstance() {
 	      if(instance == null) {
-	         instance = null;
+	         instance = new ConexionDB(HOST,BBDD,USER,PASS);
 	      }
 	      return instance;
 	  }
